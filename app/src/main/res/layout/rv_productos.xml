@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:padding="15dp"
+    android:elevation="10dp"
+    android:background="@drawable/producto_lista_bg">
+
+    <TextView
+        android:id="@+id/tituloVerProducto"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="PRODUCTO"
+        android:textColor="@color/primary"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/listInputs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tituloVerProducto"
+        app:layout_constraintBottom_toBottomOf="@id/tituloVerProducto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/reducirCantidad"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/reducir_cantidad"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <EditText
+            android:id="@+id/etCantidad"
+            android:layout_marginStart="7dp"
+            android:hint="0 u"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto_condensed_regular"
+            android:textColor="@color/primary"
+            android:textColorHint="@color/primary"
+            android:padding="0dp"
+            android:textAlignment="textEnd"
+            android:paddingEnd="15dp"
+            app:layout_constraintTop_toTopOf="@+id/reducirCantidad"
+            app:layout_constraintStart_toEndOf="@+id/reducirCantidad"
+            app:layout_constraintBottom_toBottomOf="@+id/reducirCantidad"
+            android:background="@drawable/mini_input"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/incrementarCantidad"
+            android:layout_marginStart="7dp"
+            android:layout_width="28dp"
+            android:layout_height="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/incrementar_cantidad"
+            app:layout_constraintStart_toEndOf="@+id/etCantidad"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/marcaVerProducto"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tituloVerProducto"
+        android:textSize="16sp"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        tools:text="Marca"
+        android:textColor="@color/primary"/>
+
+    <TextView
+        android:id="@+id/precioUnidadVerProducto"
+        tools:text="10.00 $ / u"
+        android:textColor="@color/primary"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/marcaVerProducto"
+        app:layout_constraintBottom_toBottomOf="@id/marcaVerProducto"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

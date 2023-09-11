@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/productosFragment">
+
+    <fragment
+        android:id="@+id/productosFragment"
+        android:name="ni.edu.uca.simplistic.ProductosFragment"
+        android:label="fragment_productos"
+        tools:layout="@layout/fragment_productos" >
+        <action
+            android:id="@+id/acProducto_CrearProducto"
+            app:destination="@id/crearProductoFragment" />
+        <action
+            android:id="@+id/acProducto_GestionarProducto"
+            app:destination="@id/gestionarProductoFragment" />
+        <action
+            android:id="@+id/acProducto_Lista"
+            app:destination="@id/listaFragment" />
+        <action
+            android:id="@+id/acProducto_Factura"
+            app:destination="@id/facturasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearProductoFragment"
+        android:name="ni.edu.uca.simplistic.CrearProductoFragment"
+        android:label="fragment_crear_producto"
+        tools:layout="@layout/fragment_crear_producto" >
+        <action
+            android:id="@+id/acCrearProducto_Producto"
+            app:destination="@id/productosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gestionarProductoFragment"
+        android:name="ni.edu.uca.simplistic.GestionarProductoFragment"
+        android:label="fragment_gestionar_producto"
+        tools:layout="@layout/fragment_gestionar_producto" >
+        <action
+            android:id="@+id/acGestionarProducto_Producto"
+            app:destination="@id/productosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listaFragment"
+        android:name="ni.edu.uca.simplistic.ListaFragment"
+        android:label="fragment_lista"
+        tools:layout="@layout/fragment_lista" >
+        <action
+            android:id="@+id/acLista_ConfirmarFactura"
+            app:destination="@id/confirmarFacturaFragment" />
+        <action
+            android:id="@+id/acLista_Factura"
+            app:destination="@id/facturasFragment" />
+        <action
+            android:id="@+id/acLista_Producto"
+            app:destination="@id/productosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/confirmarFacturaFragment"
+        android:name="ni.edu.uca.simplistic.ConfirmarFacturaFragment"
+        android:label="fragment_confirmar_factura"
+        tools:layout="@layout/fragment_confirmar_factura" >
+        <action
+            android:id="@+id/acConfirmarFactura_Lista"
+            app:destination="@id/listaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/facturasFragment"
+        android:name="ni.edu.uca.simplistic.FacturasFragment"
+        android:label="fragment_facturas"
+        tools:layout="@layout/fragment_facturas" >
+        <action
+            android:id="@+id/acFactura_Lista"
+            app:destination="@id/listaFragment" />
+        <action
+            android:id="@+id/acFactura_Producto"
+            app:destination="@id/productosFragment" />
+    </fragment>
+</navigation>
