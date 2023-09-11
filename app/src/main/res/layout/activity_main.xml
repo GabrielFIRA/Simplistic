@@ -23,5 +23,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav"
         app:itemTextColor="@color/primary"
-        app:itemBackground="@drawable/nav_bg"/>
+        app:itemIconTint="@color/primary"
+        app:itemIconSize="32dp"
+        app:itemRippleColor="@color/secondary_dark"
+        android:background="@drawable/nav_bg"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

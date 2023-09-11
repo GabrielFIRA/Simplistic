@@ -3,9 +3,11 @@
 
     <item android:title="Productos"
         android:id="@+id/productoMenuItem"
-        />
+        android:icon="@drawable/outline_local_grocery_store_24"/>
     <item android:title="Lista Actual"
-        android:id="@+id/listaMenuItem"/>
+        android:id="@+id/listaMenuItem"
+        android:icon="@drawable/baseline_list_24"/>
     <item android:title="Factura"
-        android:id="@+id/facturaMenuItem"/>
+        android:id="@+id/facturaMenuItem"
+        android:icon="@drawable/baseline_price_change_24"/>
 </menu>

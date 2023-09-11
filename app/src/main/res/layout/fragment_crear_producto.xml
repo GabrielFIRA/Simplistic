@@ -127,7 +127,8 @@
         android:shadowColor="#45131313"
         android:shadowDx="-4"
         android:shadowDy="5"
-        android:shadowRadius="1.6"/>
+        android:shadowRadius="1.6"
+        android:inputType="none"/>
 
     <Button
         android:id="@+id/btnCrearProducto"
