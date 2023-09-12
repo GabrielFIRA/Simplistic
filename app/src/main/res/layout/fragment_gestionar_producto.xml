@@ -1,14 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="match_parent"
-    tools:context=".GestionarProductoFragment">
+    tools:context=".GestionarProductoFragment"
+    android:padding="32dp"
+    android:background="#f8f8f8">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <EditText
+        android:id="@+id/etNombreProductoGestionar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="Producto"
+        android:textColorHint="@color/white"
+        android:paddingStart="11dp"
+        android:textColor="@color/white"
+        android:background="@drawable/input_bg"
+        android:shadowColor="#45131313"
+        android:shadowDx="-4"
+        android:shadowDy="5"
+        android:shadowRadius="1.6"/>
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/etMarcaProductoGestionar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNombreProductoGestionar"
+        android:layout_marginTop="34dp"
+        android:hint="Marca"
+        android:textColorHint="@color/white"
+        android:paddingStart="11dp"
+        android:textColor="@color/white"
+        android:background="@drawable/input_bg"
+        android:shadowColor="#45131313"
+        android:shadowDx="-4"
+        android:shadowDy="5"
+        android:shadowRadius="1.6"/>
+
+    <EditText
+        android:id="@+id/etPrecioProductoGestionar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textSize="20sp"
+        android:inputType="numberDecimal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etMarcaProductoGestionar"
+        android:layout_marginTop="34dp"
+        android:hint="Precio"
+        android:textColorHint="@color/white"
+        android:paddingStart="11dp"
+        android:textColor="@color/white"
+        android:background="@drawable/input_bg"
+        android:shadowColor="#45131313"
+        android:shadowDx="-4"
+        android:shadowDy="5"
+        android:shadowRadius="1.6"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:background="@drawable/radio_group"
+        android:orientation="vertical"
+        android:padding="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPrecioProductoGestionar">
+        <RadioButton
+            android:id="@+id/rbUnidadGestionar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Unidad (u)"
+            android:textColor="@color/primary"
+            android:textSize="16sp"
+            app:buttonTint="@color/primary" />
+        <RadioButton
+            android:id="@+id/rbOtroGestionar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Otro"
+            android:textColor="@color/primary"
+            android:textSize="16sp"
+            app:buttonTint="@color/primary" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/etLeyendaRBGGestionar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:background="#f8f8f8"
+        android:text="Tipo de Unidad"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+        app:layout_constraintStart_toStartOf="@+id/radioGroup"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup"
+        android:layout_marginStart="15dp"
+        android:textColor="@color/primary"
+        android:padding="6dp"/>
+
+    <EditText
+        android:id="@+id/etTipoProductoGestionar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        android:layout_marginTop="34dp"
+        android:hint="ej: kg"
+        android:textColorHint="@color/white"
+        android:paddingStart="11dp"
+        android:textColor="@color/white"
+        android:background="@drawable/input_bg"
+        android:shadowColor="#45131313"
+        android:shadowDx="-4"
+        android:shadowDy="5"
+        android:shadowRadius="1.6"/>
+
+    <Button
+        android:id="@+id/btnModificarProducto"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etTipoProductoGestionar"
+        app:layout_constraintBottom_toTopOf="@+id/btnEliminarProducto"
+        android:text="Guardar"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:backgroundTint="@color/primary"
+        android:shadowColor="#45131313"
+        android:shadowDx="-5"
+        android:shadowDy="5"
+        android:shadowRadius="0.8"/>
+
+    <Button
+        android:id="@+id/btnEliminarProducto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnModificarProducto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Eliminar"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:backgroundTint="@color/semantic_danger"
+        android:shadowColor="#45040404"
+        android:shadowDx="0"
+        android:shadowDy="5"
+        android:shadowRadius="4.5"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
