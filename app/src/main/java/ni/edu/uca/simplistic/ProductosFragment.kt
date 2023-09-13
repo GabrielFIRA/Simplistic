@@ -28,7 +28,10 @@ class ProductosFragment : Fragment() {
 
     private fun initialize() {
         fbinding.floatingActionButton.setOnClickListener {
-            Navigation.findNavController(fbinding.root).navigate(R.id.acProducto_CrearProducto)
+            val fragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            fragmentTransaction.replace(R.id.fragmentContainerView, CrearProductoFragment())
+            fragmentTransaction.commit()
         }
     }
 

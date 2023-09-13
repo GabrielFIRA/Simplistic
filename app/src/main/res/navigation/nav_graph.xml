@@ -47,23 +47,11 @@
         android:label="fragment_lista"
         tools:layout="@layout/fragment_lista" >
         <action
-            android:id="@+id/acLista_ConfirmarFactura"
-            app:destination="@id/confirmarFacturaFragment" />
-        <action
             android:id="@+id/acLista_Factura"
             app:destination="@id/facturasFragment" />
         <action
             android:id="@+id/acLista_Producto"
             app:destination="@id/productosFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/confirmarFacturaFragment"
-        android:name="ni.edu.uca.simplistic.ConfirmarFacturaFragment"
-        android:label="fragment_confirmar_factura"
-        tools:layout="@layout/fragment_confirmar_factura" >
-        <action
-            android:id="@+id/acConfirmarFactura_Lista"
-            app:destination="@id/listaFragment" />
     </fragment>
     <fragment
         android:id="@+id/facturasFragment"

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="20dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="15dp"
+    android:elevation="10dp"
+    android:background="@drawable/producto_lista_bg">
+
+    <TextView
+        android:id="@+id/tvTituloVerLista"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textColor="@color/primary"
+        tools:text="PRODUCTO x 5L"
+        android:textSize="32sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnEliminarProductoLista"/>
+
+    <TextView
+        android:id="@+id/tvPrecioVerLista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloVerLista"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="10.00 $"
+        android:textSize="20sp"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textColor="@color/primary"/>
+    
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEliminarProductoLista"
+        app:cornerRadius="6dp"
+        android:layout_width="65dp"
+        android:layout_height="70dp"
+        android:text="X"
+        app:backgroundTint="@color/semantic_danger"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="0dp"
+        android:textSize="45sp"
+        android:shadowColor="#45000000"
+        android:shadowDx="0"
+        android:shadowDy="5"
+        android:shadowRadius="4.5"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
