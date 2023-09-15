@@ -1,11 +1,11 @@
-package ni.edu.uca.simplistic
+package ni.edu.uca.simplistic.presentacion
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
+import ni.edu.uca.simplistic.R
 import ni.edu.uca.simplistic.databinding.FragmentProductosBinding
 
 

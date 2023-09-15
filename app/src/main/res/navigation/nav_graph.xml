@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/productosFragment"
-        android:name="ni.edu.uca.simplistic.ProductosFragment"
+        android:name="ni.edu.uca.simplistic.presentacion.ProductosFragment"
         android:label="fragment_productos"
         tools:layout="@layout/fragment_productos" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/crearProductoFragment"
-        android:name="ni.edu.uca.simplistic.CrearProductoFragment"
+        android:name="ni.edu.uca.simplistic.presentacion.CrearProductoFragment"
         android:label="fragment_crear_producto"
         tools:layout="@layout/fragment_crear_producto" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/gestionarProductoFragment"
-        android:name="ni.edu.uca.simplistic.GestionarProductoFragment"
+        android:name="ni.edu.uca.simplistic.presentacion.GestionarProductoFragment"
         android:label="fragment_gestionar_producto"
         tools:layout="@layout/fragment_gestionar_producto" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/listaFragment"
-        android:name="ni.edu.uca.simplistic.ListaFragment"
+        android:name="ni.edu.uca.simplistic.presentacion.ListaFragment"
         android:label="fragment_lista"
         tools:layout="@layout/fragment_lista" >
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/facturasFragment"
-        android:name="ni.edu.uca.simplistic.FacturasFragment"
+        android:name="ni.edu.uca.simplistic.presentacion.FacturasFragment"
         android:label="fragment_facturas"
         tools:layout="@layout/fragment_facturas" >
         <action

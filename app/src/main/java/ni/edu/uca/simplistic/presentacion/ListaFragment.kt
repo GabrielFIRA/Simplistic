@@ -1,4 +1,4 @@
-package ni.edu.uca.simplistic
+package ni.edu.uca.simplistic.presentacion
 
 import android.content.Intent
 import android.os.Bundle

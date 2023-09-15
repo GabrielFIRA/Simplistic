@@ -1,8 +1,9 @@
-package ni.edu.uca.simplistic
+package ni.edu.uca.simplistic.presentacion
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import ni.edu.uca.simplistic.R
 import ni.edu.uca.simplistic.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

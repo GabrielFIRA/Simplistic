@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+>
+    <LinearLayout
+        android:id="@+id/productoFacturaSeparator"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/secondary_dark"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tvNombreProductoFactura"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/productoFacturaSeparator"
+        tools:text="Producto x 5L"
+        android:textSize="32sp"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textColor="@color/primary"/>
+
+    <TextView
+        android:id="@+id/tvPrecioProductoFactura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="50 $"
+        android:textSize="20sp"
+        android:fontFamily="@font/roboto_condensed_regular"
+        android:textColor="@color/primary"
+        app:layout_constraintTop_toBottomOf="@id/productoFacturaSeparator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tvNombreProductoFactura"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
