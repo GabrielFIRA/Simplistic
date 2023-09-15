@@ -13,7 +13,7 @@ import ni.edu.uca.simplistic.datos.modelo.ProductoCompra
 
 @Database(
     entities = [Producto::class, ProductoCompra::class, Factura::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class BD : RoomDatabase() {
@@ -22,8 +22,8 @@ abstract class BD : RoomDatabase() {
     abstract fun daoFactura(): DaoFactura
 
     companion object {
-        @Volatile
         //Singleton
+        @Volatile
         private var INSTANCE: BD? = null
         fun getDataBase(context: Context): BD {
             val tempInstace = INSTANCE
@@ -34,7 +34,7 @@ abstract class BD : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     BD::class.java,
-                    "BD_Simplistic"
+                    "BD_Simplistic2"
                 ).build()
                 INSTANCE = instance
                 return instance

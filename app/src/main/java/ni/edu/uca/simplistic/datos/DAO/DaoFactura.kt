@@ -10,7 +10,7 @@ import ni.edu.uca.simplistic.datos.modelo.Factura
 @Dao
 interface DaoFactura {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addFactura(factura: Factura)
+    fun addFactura(factura: Factura)
 
     @Query("SELECT * FROM Factura ORDER BY fechaDeCompra DESC")
     fun readAllData(): LiveData<List<Factura>>

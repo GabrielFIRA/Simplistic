@@ -11,7 +11,7 @@ import ni.edu.uca.simplistic.datos.modelo.Producto
 interface DaoProducto {
     // If already exists, do not add
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addProducto(producto: Producto)
+    fun addProducto(producto: Producto)
 
     @Query("SELECT * FROM Producto ORDER BY nombre ASC")
     fun readAllData(): LiveData<List<Producto>>
