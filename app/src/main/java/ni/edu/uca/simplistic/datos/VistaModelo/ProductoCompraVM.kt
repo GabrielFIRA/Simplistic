@@ -11,7 +11,7 @@ import ni.edu.uca.simplistic.datos.modelo.ProductoCompra
 import ni.edu.uca.simplistic.datos.repositorios.ProductoCompraRepo
 
 class ProductoCompraVM(application: Application): AndroidViewModel(application) {
-    private val readAllData: LiveData<List<ProductoCompra>>
+    val readAllData: LiveData<List<ProductoCompra>>
     private val repository: ProductoCompraRepo
 
     init {

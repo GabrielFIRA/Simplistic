@@ -10,4 +10,8 @@ class ProductoRepo(val daoProducto: DaoProducto) {
     suspend fun addProducto(producto: Producto) {
         daoProducto.addProducto(producto)
     }
+
+    suspend fun updateProducto(producto: Producto) {
+        daoProducto.updateProducto(producto)
+    }
 }

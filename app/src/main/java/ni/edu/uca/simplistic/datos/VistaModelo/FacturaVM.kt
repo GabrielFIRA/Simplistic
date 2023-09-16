@@ -11,7 +11,7 @@ import ni.edu.uca.simplistic.datos.modelo.Factura
 import ni.edu.uca.simplistic.datos.repositorios.FacturaRepo
 
 class FacturaVM(application: Application) : AndroidViewModel(application) {
-    private val readAllData: LiveData<List<Factura>>
+    val readAllData: LiveData<List<Factura>>
     private val repository: FacturaRepo
 
     init {

@@ -1,9 +1,12 @@
 package ni.edu.uca.simplistic.datos.modelo
 
+import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 @Entity(tableName = "Producto")
 data class Producto (
     @PrimaryKey(autoGenerate = true)
@@ -19,4 +22,4 @@ data class Producto (
     var unidad: String,
     @ColumnInfo(name = "estado")
     var estado: Int // 0 = inactivo/eliminado, 1 = activo
-)
+) : Parcelable

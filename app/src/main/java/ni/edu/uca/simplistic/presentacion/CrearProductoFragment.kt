@@ -38,24 +38,20 @@ class CrearProductoFragment : Fragment() {
     }
 
     private fun addProducto() {
-        if(!inputCheck()){
-            Toast.makeText(requireContext(), "Todos los campos son obligatorios!", Toast.LENGTH_SHORT).show()
+        if(inputCheck()){
+            Toast.makeText(requireActivity(), "Todos los campos son obligatorios!", Toast.LENGTH_SHORT).show()
             return
         }
         val nombre: String = fbinding.etNombreProductoCrear.text.toString()
         val precio: Float = fbinding.etPrecioProductoCrear.text.toString().toFloat()
         val marca: String = fbinding.etMarcaProductoCrear.text.toString()
-        var unidad: String
-        if(fbinding.rbUnidadCrear.isSelected) {
-            unidad = "u"
-        }
-        else{
-            unidad = fbinding.etTipoProductoCrear.text.toString()
-        }
+        val unidad: String = if(fbinding.rbUnidadCrear.isChecked) "u"
+        else fbinding.etTipoProductoCrear.text.toString()
 
         val producto = Producto(0, nombre, precio, marca, unidad, 1)
         productoVM.addProducto(producto)
-        Toast.makeText(requireContext(), "Producto agregado", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireActivity(), "Producto agregado", Toast.LENGTH_SHORT).show()
+
         val fragmentManager = requireActivity().supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainerView, ProductosFragment())
@@ -63,15 +59,15 @@ class CrearProductoFragment : Fragment() {
     }
 
     private fun inputCheck(): Boolean {
-        if(fbinding.etNombreProductoCrear.text.toString() != "" &&
-            fbinding.etPrecioProductoCrear.text.toString() != "" &&
-            fbinding.etMarcaProductoCrear.text.toString() != "" &&
-            (fbinding.rbOtroCrear.isSelected && fbinding.etTipoProductoCrear.text.toString() != "")
+        if(fbinding.etNombreProductoCrear.text.toString() == "" ||
+            fbinding.etPrecioProductoCrear.text.toString() == "" ||
+            fbinding.etMarcaProductoCrear.text.toString() == "" ||
+            (fbinding.rbOtroCrear.isChecked && fbinding.etTipoProductoCrear.text.toString() == "")
         )
         {
-            return false
+            return true
         }
-        return true
+        return false
     }
 
 }

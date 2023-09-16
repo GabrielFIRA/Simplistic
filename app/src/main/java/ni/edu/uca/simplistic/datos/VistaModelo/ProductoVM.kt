@@ -11,7 +11,7 @@ import ni.edu.uca.simplistic.datos.modelo.Producto
 import ni.edu.uca.simplistic.datos.repositorios.ProductoRepo
 
 class ProductoVM(application: Application): AndroidViewModel(application) {
-    private val readAllData: LiveData<List<Producto>>
+    val readAllData: LiveData<List<Producto>>
     private val repository: ProductoRepo
 
     init {
@@ -23,6 +23,12 @@ class ProductoVM(application: Application): AndroidViewModel(application) {
     fun addProducto(producto: Producto) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addProducto(producto)
+        }
+    }
+
+    fun updateProducto(producto: Producto) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateProducto(producto)
         }
     }
 }

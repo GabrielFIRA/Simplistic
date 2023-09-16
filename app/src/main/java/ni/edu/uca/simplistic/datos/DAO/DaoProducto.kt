@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import ni.edu.uca.simplistic.datos.modelo.Producto
 
 @Dao
@@ -15,4 +16,7 @@ interface DaoProducto {
 
     @Query("SELECT * FROM Producto ORDER BY nombre ASC")
     fun readAllData(): LiveData<List<Producto>>
+
+    @Update
+    fun updateProducto(producto: Producto)
 }
