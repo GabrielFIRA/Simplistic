@@ -22,9 +22,6 @@ import java.text.DecimalFormat
 class ListaAdapter(val productoVM: ProductoVM) :
     RecyclerView.Adapter<ListaAdapter.ListaAdapterViewHolder>() {
     private lateinit var productoTemp: Producto
-    init {
-
-    }
 
     inner class ListaAdapterViewHolder(origin: View) : RecyclerView.ViewHolder(origin) {
         private val producto = origin.findViewById<TextView>(R.id.tvTituloVerLista)
@@ -35,23 +32,18 @@ class ListaAdapter(val productoVM: ProductoVM) :
         // mother of christ
         @SuppressLint("SetTextI18n")
         fun load(productoCompra: ProductoCompra, position: Int) {
-            productoVM.readProductoById(object: MainListener {
+            productoVM.readProductoById(object : MainListener {
                 override fun onSuccess(any: Any) {
                     GlobalScope.launch(Dispatchers.Main) {
                         productoTemp = any as Producto
-                        producto.text = productoTemp.nombre.uppercase()
+                        producto.text =
+                            productoTemp.nombre.uppercase() + " x " +
+                                    productoCompra.cantidad.toString() +
+                                    productoTemp.unidad.uppercase()
 
-                        val precio = DecimalFormat("0.00").format((productoTemp.precio * productoCompra.cantidad).toDouble())
+                        val precio =
+                            DecimalFormat("0.00").format((productoTemp.precio * productoCompra.cantidad).toDouble())
                         precioTotal.text = "$precio $"
-
-                        btnEliminarProducto.setOnClickListener{
-                            for(li in ProductoCompraGlobal.productoCompraList) {
-                                if(li.idProductoCompra == productoCompra.idProductoCompra){
-                                    notifyItemRemoved(position)
-                                    ProductoCompraGlobal.productoCompraList.remove(li)
-                                }
-                            }
-                        }
                     }
                 }
 
@@ -59,6 +51,15 @@ class ListaAdapter(val productoVM: ProductoVM) :
                     Log.wtf("Lista Adapter", "ERROR AL BUSCAR PRODUCTO POR ID")
                 }
             }, productoCompra.idProducto)
+
+            btnEliminarProducto.setOnClickListener {
+                for (li in ProductoCompraGlobal.productoCompraList) {
+                    if (li.idProductoCompra == productoCompra.idProductoCompra) {
+                        notifyItemRemoved(position)
+                        ProductoCompraGlobal.productoCompraList.remove(li)
+                    }
+                }
+            }
         }
     }
 

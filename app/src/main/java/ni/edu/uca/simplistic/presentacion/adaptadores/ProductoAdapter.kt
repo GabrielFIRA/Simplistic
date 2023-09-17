@@ -60,11 +60,23 @@ class ProductoAdapter(val fragmentActivity: FragmentActivity) :
                 fragmentTransaction.replace(R.id.fragmentContainerView, gestionarProducto)
                 fragmentTransaction.commit()
             }
-
+            if(ProductoCompraGlobal.productoCompraList.size != 0) {
+                for (li in ProductoCompraGlobal.productoCompraList) {
+                    if(li.idProducto == producto.idProducto) {
+                        if(producto.unidad == "u") {
+                            cantidad.setText("${li.cantidad.toInt()}")
+                        }else{
+                            cantidad.setText("${li.cantidad}")
+                        }
+                    }
+                }
+            }
             // HORRIBLY NESTED x(
             incrementarCantidad.setOnClickListener {
+                //validar que sea U
                 if (producto.unidad == "u") {
                     val cantidadTemp: Int
+                    // Si esta vacio y no es 0 significa que ya existe, si se reduce a 0 deberia eliminarse
                     if (cantidad.text.toString() != "") {
                         if(cantidad.text.toString().toInt() != 0){
                             cantidadTemp = cantidad.text.toString().toInt()
@@ -75,7 +87,9 @@ class ProductoAdapter(val fragmentActivity: FragmentActivity) :
                                 }
                             }
                         }
-                    } else {
+                    }
+                    // Si esta vacio, al presionar el boton en int el resultado siempre sera 1, y se creara nuevo registro temp
+                    else {
                         cantidad.setText("1")
                         val productoCompra = ProductoCompra(
                             0,
@@ -83,16 +97,22 @@ class ProductoAdapter(val fragmentActivity: FragmentActivity) :
                             0,
                             producto.idProducto
                         )
+                        // si la lista esta vacia, agregar directamente
                         if(ProductoCompraGlobal.productoCompraList.size == 0) {
                             ProductoCompraGlobal.productoCompraList.add(productoCompra)
                         }
-                        for(li in ProductoCompraGlobal.productoCompraList){
-                            if(li.idProducto != producto.idProducto){
-                                ProductoCompraGlobal.productoCompraList.add(productoCompra)
+                        // Si no, revisar que el producto no se haya agregado previamente.
+                        else{
+                            for(li in ProductoCompraGlobal.productoCompraList){
+                                if(li.idProducto != producto.idProducto){
+                                    ProductoCompraGlobal.productoCompraList.add(productoCompra)
+                                }
                             }
                         }
                     }
-                } else {
+                }
+                // En caso de no ser U
+                else {
                     val cantidadTemp: Float
                     if (cantidad.text.toString() != "") {
                         cantidadTemp = cantidad.text.toString().toFloat()
@@ -124,8 +144,18 @@ class ProductoAdapter(val fragmentActivity: FragmentActivity) :
                     if (cantidad.text.toString() != "" && cantidad.text.toString().toInt() -1 > 0) {
                         cantidadTemp = cantidad.text.toString().toInt()
                         cantidad.setText("${cantidadTemp - 1}")
+                        for(li in ProductoCompraGlobal.productoCompraList) {
+                            if(li.idProducto == producto.idProducto) {
+                                li.cantidad = cantidadTemp - 1f
+                            }
+                        }
                     } else {
                         cantidad.setText("")
+                        for(li in ProductoCompraGlobal.productoCompraList) {
+                            if(li.idProducto == producto.idProducto) {
+                                ProductoCompraGlobal.productoCompraList.remove(li)
+                            }
+                        }
                     }
                 } else {
                     val cantidadTemp: Float
@@ -134,8 +164,18 @@ class ProductoAdapter(val fragmentActivity: FragmentActivity) :
                     ) {
                         cantidadTemp = cantidad.text.toString().toFloat()
                         cantidad.setText("${cantidadTemp - 0.1f}")
+                        for (li in ProductoCompraGlobal.productoCompraList) {
+                            if(li.idProducto == producto.idProducto) {
+                                li.cantidad = cantidadTemp - 0.1f
+                            }
+                        }
                     } else {
                         cantidad.setText("")
+                        for(li in ProductoCompraGlobal.productoCompraList) {
+                            if(li.idProducto == producto.idProducto) {
+                                ProductoCompraGlobal.productoCompraList.remove(li)
+                            }
+                        }
                     }
                 }
             }

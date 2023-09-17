@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 import ni.edu.uca.simplistic.datos.BD
 import ni.edu.uca.simplistic.datos.modelo.Factura
 import ni.edu.uca.simplistic.datos.repositorios.FacturaRepo
+import ni.edu.uca.simplistic.datos.utils.MainListener
 
 class FacturaVM(application: Application) : AndroidViewModel(application) {
     val readAllData: LiveData<List<Factura>>
@@ -23,6 +24,12 @@ class FacturaVM(application: Application) : AndroidViewModel(application) {
     fun addFactura(factura: Factura) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addFactura(factura)
+        }
+    }
+
+    fun readLastFactura(mainListener: MainListener) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.readLastFactura(mainListener)
         }
     }
 }

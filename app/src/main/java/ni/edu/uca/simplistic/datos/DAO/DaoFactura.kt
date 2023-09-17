@@ -14,4 +14,7 @@ interface DaoFactura {
 
     @Query("SELECT * FROM Factura ORDER BY fechaDeCompra DESC")
     fun readAllData(): LiveData<List<Factura>>
+
+    @Query("SELECT * FROM Factura ORDER BY idFactura DESC")
+    fun readLastFactura(): List<Factura>
 }
