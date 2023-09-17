@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 import ni.edu.uca.simplistic.datos.BD
 import ni.edu.uca.simplistic.datos.modelo.Producto
 import ni.edu.uca.simplistic.datos.repositorios.ProductoRepo
+import ni.edu.uca.simplistic.datos.utils.MainListener
 
 class ProductoVM(application: Application): AndroidViewModel(application) {
     val readAllData: LiveData<List<Producto>>
@@ -23,6 +24,12 @@ class ProductoVM(application: Application): AndroidViewModel(application) {
     fun addProducto(producto: Producto) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addProducto(producto)
+        }
+    }
+
+    fun readProductoById(mainListener: MainListener, idProducto: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.readProductoById(mainListener, idProducto)
         }
     }
 

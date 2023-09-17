@@ -26,6 +26,7 @@
         app:tint="@color/primary" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerListaProductos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="1dp"
