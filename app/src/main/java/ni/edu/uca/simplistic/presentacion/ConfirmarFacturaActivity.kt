@@ -9,8 +9,10 @@ import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import ni.edu.uca.simplistic.databinding.ActivityConfirmarFacturaBinding
 import ni.edu.uca.simplistic.datos.VistaModelo.FacturaVM
@@ -77,26 +79,30 @@ class ConfirmarFacturaActivity : AppCompatActivity() {
         val context = this
         val factura = Factura(0, fechaActual)
         facturaVM.addFactura(factura)
-        facturaVM.readLastFactura(object: MainListener{
-            override fun onSuccess(any: Any) {
-                val facturaFinal = any as Factura
-                for (li in ProductoCompraGlobal.productoCompraList) {
-                    // agregar a bd
-                    li.idFactura = facturaFinal.idFactura
-                    productoCompraVM.addProductoCompra(li)
-                    // vaciar arreglo lentamente
-                    ProductoCompraGlobal.productoCompraList.remove(li)
-                }
-                GlobalScope.launch(Dispatchers.Main) {
+        CoroutineScope(Dispatchers.Main).launch {
+            delay(1000)
+            facturaVM.readLastFactura(object: MainListener{
+                override fun onSuccess(any: Any) {
+                    val facturaFinal = any as Factura
+                    for (li in ProductoCompraGlobal.productoCompraList) {
+                        // agregar a bd
+                        li.idFactura = facturaFinal.idFactura
+                        productoCompraVM.addProductoCompra(li)
+                    }
+                    // Eliminar arreglo estatico
                     val intent = Intent(context, MainActivity::class.java)
                     startActivity(intent)
-                    Toast.makeText(context, "Factura guardada exitosamente", Toast.LENGTH_SHORT).show()
+                    CoroutineScope(Dispatchers.Main).launch {
+                        delay(1000)
+                        ProductoCompraGlobal.productoCompraList.removeAll(ProductoCompraGlobal.productoCompraList.toSet())
+                    }
                 }
-            }
 
-            override fun onFailure() {
-                Log.wtf("ConfirmarFacturaActivity", "Error al obtener factura final")
-            }
-        })
+                override fun onFailure() {
+                    Log.wtf("ConfirmarFacturaActivity", "Error al obtener factura final")
+                }
+            })
+        }
+        Toast.makeText(context, "Factura guardada exitosamente", Toast.LENGTH_SHORT).show()
     }
 }
