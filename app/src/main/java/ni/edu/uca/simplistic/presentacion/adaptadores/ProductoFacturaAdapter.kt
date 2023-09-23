@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ni.edu.uca.simplistic.R
 import ni.edu.uca.simplistic.datos.modelo.Producto
 import ni.edu.uca.simplistic.datos.modelo.ProductoCompra
+import java.text.DecimalFormat
 
 class ProductoFacturaAdapter: RecyclerView.Adapter<ProductoFacturaAdapter.ProductoFacturaHolder>() {
     private var productoCompraList = emptyList<ProductoCompra>()
@@ -23,9 +24,9 @@ class ProductoFacturaAdapter: RecyclerView.Adapter<ProductoFacturaAdapter.Produc
             if(prod != null) {
                 producto.text = prod.nombre +
                         " x " +
-                        productoCompra.cantidad.toInt().toString() +
+                        (if (prod.unidad == "u") productoCompra.cantidad.toInt().toString() else productoCompra.cantidad.toString()) +
                         prod.unidad
-                precio.text = "${prod.precio * productoCompra.cantidad} $"
+                precio.text = "${DecimalFormat("0.00").format((prod.precio * productoCompra.cantidad).toDouble())} $"
             }
         }
     }

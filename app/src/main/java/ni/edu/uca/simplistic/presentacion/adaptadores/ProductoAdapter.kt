@@ -123,16 +123,21 @@ class ProductoAdapter(val fragmentActivity: FragmentActivity) :
                             }
                         }
                     } else {
+                        val productoCompra = ProductoCompra(
+                            0,
+                            0.1f,
+                            0,
+                            producto.idProducto
+                        )
                         cantidad.setText("0.1")
-                        for(li in ProductoCompraGlobal.productoCompraList){
-                            if(li.idProducto != producto.idProducto){
-                                val productoCompra = ProductoCompra(
-                                    0,
-                                    0.1f,
-                                    0,
-                                    producto.idProducto
-                                )
-                                ProductoCompraGlobal.productoCompraList.add(productoCompra)
+                        if(ProductoCompraGlobal.productoCompraList.size == 0) {
+                            ProductoCompraGlobal.productoCompraList.add(productoCompra)
+                        }
+                        else{
+                            for(li in ProductoCompraGlobal.productoCompraList){
+                                if(li.idProducto != producto.idProducto){
+                                    ProductoCompraGlobal.productoCompraList.add(productoCompra)
+                                }
                             }
                         }
                     }

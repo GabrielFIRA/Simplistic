@@ -30,10 +30,14 @@ class FacturaAdapter(
     inner class FacturaViewHolder(private val origin: View) : RecyclerView.ViewHolder(origin) {
         private val fecha = origin.findViewById<TextView>(R.id.tvFechaFactura)
         private val total = origin.findViewById<TextView>(R.id.tvTotalFactura)
-        private val factura = origin.findViewById<ConstraintLayout>(R.id.recyclerFactura)
+        private val clfactura = origin.findViewById<ConstraintLayout>(R.id.recyclerFactura)
+        private val rvProductosComprados = origin.findViewById<RecyclerView>(R.id.rvProductosComprados)
+        private val clIcono = origin.findViewById<ConstraintLayout>(R.id.mostrarProductosComprados)
+        private var isOpen = false
 
         @SuppressLint("SetTextI18n")
         fun load(factura: Factura) {
+            clfactura.setOnClickListener { openClose() }
             fecha.text = factura.fechaDeCompra
             val productosCompra = ArrayList<ProductoCompra>()
             productoCompraVM.readAllData.observe(fragment.viewLifecycleOwner, Observer {pc ->
@@ -57,6 +61,17 @@ class FacturaAdapter(
                     loadRV2(productosCompra, productos)
                 })
             })
+        }
+
+        private fun openClose() {
+            isOpen = !isOpen
+            if(isOpen){
+                rvProductosComprados.visibility = View.VISIBLE
+                clIcono.rotation = 0f
+            } else{
+                rvProductosComprados.visibility = View.GONE
+                clIcono.rotation = 180f
+            }
         }
 
         private fun loadRV2(productosCompra: List<ProductoCompra>, productos: List<Producto>) {

@@ -19,13 +19,14 @@
     </LinearLayout>
     <TextView
         android:id="@+id/tvNombreProductoFactura"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/productoFacturaSeparator"
         tools:text="Producto x 5L"
         android:textSize="32sp"
         android:fontFamily="@font/roboto_condensed_regular"
+        app:layout_constraintEnd_toStartOf="@id/tvPrecioProductoFactura"
         android:textColor="@color/primary"/>
 
     <TextView
