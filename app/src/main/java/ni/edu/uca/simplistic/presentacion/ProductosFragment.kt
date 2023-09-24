@@ -49,7 +49,7 @@ class ProductosFragment : Fragment() {
         recycler.layoutManager = LinearLayoutManager(requireContext())
         recycler.setHasFixedSize(true)
         recycler.adapter = adapter
-        productoVM.readAllData.observe(viewLifecycleOwner, Observer {producto ->
+        productoVM.readNonDeletedData.observe(viewLifecycleOwner, Observer {producto ->
             adapter.setData(producto)
         })
     }

@@ -36,7 +36,21 @@ class GestionarProductoFragment : Fragment() {
         fbinding.btnModificarProducto.setOnClickListener {
             updateProducto()
         }
+        fbinding.btnEliminarProducto.setOnClickListener {
+            eliminarProducto()
+        }
         loadEditText()
+    }
+
+    private fun eliminarProducto() {
+        producto.estado = 3
+        productoVM.updateProducto(producto)
+        Toast.makeText(requireActivity(), "Eliminado exitosamente", Toast.LENGTH_SHORT).show()
+
+        val fragmentManager = requireActivity().supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragmentContainerView, ProductosFragment())
+        fragmentTransaction.commit()
     }
 
     private fun loadEditText() {

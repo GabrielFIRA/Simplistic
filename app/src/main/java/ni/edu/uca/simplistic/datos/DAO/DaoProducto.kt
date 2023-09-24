@@ -17,6 +17,9 @@ interface DaoProducto {
     @Query("SELECT * FROM Producto ORDER BY nombre ASC")
     fun readAllData(): LiveData<List<Producto>>
 
+    @Query("SELECT * FROM Producto WHERE estado != 3 ORDER BY nombre ASC")
+    fun readNonDeletedData(): LiveData<List<Producto>>
+
     @Query("SELECT * FROM Producto WHERE idProducto = :idProducto")
     fun readProductoById(idProducto: Int): Producto
 

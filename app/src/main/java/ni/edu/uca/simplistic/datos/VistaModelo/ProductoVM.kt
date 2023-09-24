@@ -13,12 +13,14 @@ import ni.edu.uca.simplistic.datos.utils.MainListener
 
 class ProductoVM(application: Application): AndroidViewModel(application) {
     val readAllData: LiveData<List<Producto>>
+    val readNonDeletedData: LiveData<List<Producto>>
     private val repository: ProductoRepo
 
     init {
         val daoProducto = BD.getDataBase(application).daoProducto()
         repository = ProductoRepo(daoProducto)
         readAllData = repository.readAllData
+        readNonDeletedData = repository.readNonDeletedData
     }
 
     fun addProducto(producto: Producto) {

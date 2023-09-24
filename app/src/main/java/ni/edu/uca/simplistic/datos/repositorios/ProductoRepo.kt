@@ -8,6 +8,7 @@ import java.lang.Exception
 
 class ProductoRepo(val daoProducto: DaoProducto) {
     val readAllData: LiveData<List<Producto>> = daoProducto.readAllData()
+    val readNonDeletedData: LiveData<List<Producto>> = daoProducto.readNonDeletedData()
 
     suspend fun readProductoById(mainListener: MainListener, idProducto: Int) {
         try {
